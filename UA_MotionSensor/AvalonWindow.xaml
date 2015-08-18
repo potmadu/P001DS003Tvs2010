@@ -41,6 +41,11 @@
         <avalonDock:DockingManager Grid.Row="1" x:Name="dockManager" AllowMixedOrientation="true">
             <avalonDock:LayoutRoot>
                 <avalonDock:LayoutPanel Orientation="Horizontal">
+                    <avalonDock:LayoutAnchorablePane DockWidth="300">
+                        <avalonDock:LayoutAnchorable x:Name="WinFormsWindow"  ContentId="WinFormsWindow" Title="WinForms Window" ToolTip="My WinForms Tool" CanHide="False" CanClose="False" >
+                            <winformsIntegration:WindowsFormsHost x:Name="winFormsHost" Background="White"/>
+                        </avalonDock:LayoutAnchorable>
+                    </avalonDock:LayoutAnchorablePane>
                     <avalonDock:LayoutDocumentPane>
                         <avalonDock:LayoutDocument>
                             <Grid>
@@ -64,17 +69,19 @@
                             </Grid>
                         </avalonDock:LayoutDocument>
                     </avalonDock:LayoutDocumentPane>
-                </avalonDock:LayoutPanel>
-                <avalonDock:LayoutRoot.LeftSide>
-                    <avalonDock:LayoutAnchorSide>
-                        <avalonDock:LayoutAnchorGroup>
-                            <avalonDock:LayoutAnchorable Title="Autohidden Content">
-                                <TextBox/>
-                                
+                    <avalonDock:LayoutAnchorablePaneGroup DockWidth="300">
+                        <avalonDock:LayoutAnchorablePane>
+                            <avalonDock:LayoutAnchorable ContentId="toolWindow1" Title="Tool Window 1">
+                                <StackPanel>
+                                    <TextBox Text="{Binding TestTimer, Mode=OneWay, StringFormat='Tool Window 1 Attached to Timer ->\{0\}'}"/>
+                                </StackPanel>
                             </avalonDock:LayoutAnchorable>
-                        </avalonDock:LayoutAnchorGroup>
-                    </avalonDock:LayoutAnchorSide>
-                </avalonDock:LayoutRoot.LeftSide>
+                            <avalonDock:LayoutAnchorable ContentId="toolWindow2" Title="Tool Window 2">
+                                <TextBlock Text="{Binding FocusedElement}"/>
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+                    </avalonDock:LayoutAnchorablePaneGroup>
+                </avalonDock:LayoutPanel>
             </avalonDock:LayoutRoot>
         </avalonDock:DockingManager>
     </Grid>
