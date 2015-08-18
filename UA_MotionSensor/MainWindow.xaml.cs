@@ -154,5 +154,11 @@ namespace UA_MotionSensor
         {
             m_isDrag = true;
         }
+
+        private void buttonSnapshot_Click_1(object sender, RoutedEventArgs e)
+        {
+            m_player.Pause();
+            m_player.TakeSnapShot(0, @"c:\temp\");
+        }
     }
 }
